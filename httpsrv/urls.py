@@ -15,4 +15,9 @@ urlpatterns = [
     # meta updates
     url(r'^update_title',views.update_title),
 
+    url(r'^about',views.about),
+    url(r'^courses',views.courses),
+    url(r'^teacher',views.teacher),
+    url(r'^blog',views.blog),
+    url(r'^contact',views.contact),
 ]

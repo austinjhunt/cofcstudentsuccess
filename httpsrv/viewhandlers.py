@@ -1,5 +1,5 @@
 from .models import *
-from .util import * 
+from .util import *
 from django.shortcuts import render
 import json,requests
 from django.db.models import Q
@@ -14,21 +14,37 @@ from django.forms.models import model_to_dict
 def index_handler(request):
 	return render(template_name='index.html',context={},request=request)
 
+def about_handler(request):
+	return render(template_name='about.html',context={},request=request)
 
-def login_view_handler(request): 
+def courses_handler(request):
+	return render(template_name='courses.html',context={},request=request)
+
+def teacher_handler(request):
+	return render(template_name='teacher.html',context={},request=request)
+
+def blog_handler(request):
+	return render(template_name='blog.html',context={},request=request)
+
+def contact_handler(request):
+	return render(template_name='contact.html',context={},request=request)
+
+
+
+def login_view_handler(request):
 	"""
 	Handler for the login view; handles either GET or POST
 	"""
 	if request.method == "POST": # then they're trying to log in/submitting the form
 		username,passwd = request.POST.get('username',''),request.POST.get('password','')
-		if username != "" and passwd != "": 
+		if username != "" and passwd != "":
 			user = authenticate(request, username=username, password=passwd)
 			if user is not None:
 				login(request, user)
 				return HttpResponseRedirect(request.POST.get('next','/'))
-			else: 
+			else:
 				return render(request=request, template_name='login.html',context={'failed_login':1})
-		else: 
+		else:
 			return render(request=request, template_name='login.html',context={'failed_login':1})
 	elif request.method == "GET": # not submitting form
 		return render(request=request,
@@ -37,14 +53,14 @@ def login_view_handler(request):
 
 def logout_view_handler(request):
 	""" Handler for the logout view """
-	if request.user.is_authenticated: 
+	if request.user.is_authenticated:
 		logout(request)
 	return HttpResponseRedirect("/")
 
-def sign_up_view_handler(request): 
+def sign_up_view_handler(request):
 	""" handler for sign up view """
 
-	if request.method == "POST": 
+	if request.method == "POST":
 		# form submission; create account if valid
 		rp = request.POST
 		first_name,last_name,email,password = rp.get('first_name',None),rp.get('last_name',None),rp.get('username',None),rp.get('pwd1',None)
@@ -62,20 +78,20 @@ def sign_up_view_handler(request):
 				  template_name='sign_up.html')
 
 
-def update_bio_handler(request): 
+def update_bio_handler(request):
 	"""
 	Handler for updating bio (api call when bio is changed)
 	"""
 	bio = request.POST.get('bio',None)
 	print("Bio: {}".format(bio))
-	if bio is not None: 
+	if bio is not None:
 		u = User.objects.get(id=request.user.id)
 		u.profile.bio = bio.strip().replace("&nbsp;"," ")
 		u.profile.save()
 	return JsonResponse({})
 
-def update_title_handler(request): 
-	if request.method == "POST": 
+def update_title_handler(request):
+	if request.method == "POST":
 		m = Meta.objects.all()[0]
 		nt = request.POST.get('new_title','')
 		m.navbar_title = nt
@@ -83,15 +99,15 @@ def update_title_handler(request):
 		m.save()
 		return HttpResponse(json.dumps({'res':'succcess'}))
 
-	else: 
+	else:
 		return HttpResponseRedirect("/")
 
 
-def calendar_handler(request): 
+def calendar_handler(request):
 	return render(template_name="calendar2.html", context={},request=request)
 
-def review_handler(request): 
-    if request.method == "POST": 
+def review_handler(request):
+    if request.method == "POST":
         print(request.POST)
-    elif request.method == "GET": 
+    elif request.method == "GET":
         return render(template_name="review.html",context={},request=request)

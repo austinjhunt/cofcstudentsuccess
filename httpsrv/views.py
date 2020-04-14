@@ -8,6 +8,28 @@ def index(request):
     """ Home page view"""
     return index_handler(request)
 
+
+def about(request):
+    """About page view"""
+    return about_handler(request)
+
+def courses(request):
+    """ Home page view"""
+    return courses_handler(request)
+
+
+def teacher(request):
+    """ Home page view"""
+    return teacher_handler(request)
+
+def blog(request):
+    """ Home page view"""
+    return blog_handler(request)
+
+def contact(request):
+    """ Home page view"""
+    return contact_handler(request)
+
 def login_view(request):
     """ View for logging in """
     if request.user.is_authenticated:

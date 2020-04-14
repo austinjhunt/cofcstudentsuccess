@@ -10,10 +10,10 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
 
 class Meta(models.Model):
-    site_title = models.CharField(max_length=65,default="")
-    navbar_title = models.CharField(max_length=65,default="")
-    footer_left = models.TextField(default="")
-    column_left_color = models.CharField(max_length=65,default="")
-    column_mid_color = models.CharField(max_length=65,default="")
-    column_right_color = models.CharField(max_length=65,default="")
+    value = models.TextField(default="")
+    attribute_name = models.CharField(max_length=50, default="")
 
+class SliderItem(models.Model):
+    background_image = models.CharField(max_length=50, default="bg_1.jpg")
+    description = models.TextField(default="Slider item description")
+    header = models.TextField(default="Slider item header")
