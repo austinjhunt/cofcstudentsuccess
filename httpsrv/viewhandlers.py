@@ -20,8 +20,8 @@ def about_handler(request):
 def courses_handler(request):
 	return render(template_name='courses.html',context={},request=request)
 
-def teacher_handler(request):
-	return render(template_name='teacher.html',context={},request=request)
+def professors_handler(request):
+	return render(template_name='professors.html',context={},request=request)
 
 def blog_handler(request):
 	return render(template_name='blog.html',context={},request=request)

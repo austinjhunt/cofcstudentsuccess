@@ -17,3 +17,14 @@ class SliderItem(models.Model):
     background_image = models.CharField(max_length=50, default="bg_1.jpg")
     description = models.TextField(default="Slider item description")
     header = models.TextField(default="Slider item header")
+
+class BlogPost(models.Model):
+    author = models.ForeignKey(User,on_delete=models.CASCADE)
+    day = models.CharField(max_length=25,default="01")
+    month = models.CharField(max_length=25,default="January")
+    year = models.CharField(max_length=25,default="2020")
+    content = models.TextField(default="")
+    preview = models.TextField(default="")
+    title = models.CharField(max_length=50,default="")
+    tags = models.CharField(max_length=65,default="")
+    image = models.CharField(max_length=65,default="bg_1.jpg")

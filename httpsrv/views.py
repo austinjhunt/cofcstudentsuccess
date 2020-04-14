@@ -18,9 +18,9 @@ def courses(request):
     return courses_handler(request)
 
 
-def teacher(request):
+def professors(request):
     """ Home page view"""
-    return teacher_handler(request)
+    return professors_handler(request)
 
 def blog(request):
     """ Home page view"""

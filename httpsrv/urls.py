@@ -17,7 +17,7 @@ urlpatterns = [
 
     url(r'^about',views.about),
     url(r'^courses',views.courses),
-    url(r'^teacher',views.teacher),
+    url(r'^professors',views.professors),
     url(r'^blog',views.blog),
     url(r'^contact',views.contact),
 ]
