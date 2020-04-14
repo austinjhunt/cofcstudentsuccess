@@ -50,7 +50,7 @@ a, .color-tigereye{
     color:#d58936;
 }
 .color-lemonyellow{
-    color:#fff94f;
+    color:#F1F0CC;
 }
 .color-purple{
     color:#4F0147;
@@ -72,7 +72,7 @@ a, .color-tigereye{
     background-color:#d58936;
 }
 .bg-lemonyellow{
-    background-color:#fff94f;
+    background-color:#F1F0CC;
 }
 .bg-purple{
     background-color: #4F0147;
@@ -80,12 +80,7 @@ a, .color-tigereye{
 .bg-black{
     background-color: #000000;
 }
-/* background-image */
-.bg-weston{
-    background-image: url('/static/images/weston.jpg');
-    opacity: 0.4;
-    background-repeat: no-repeat;
-}
+
 .choice_button{
     font-size:2rem;
     margin:20px;
